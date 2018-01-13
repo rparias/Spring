@@ -20,6 +20,12 @@ public class BaseballCoach implements Coach  {
 		//uso mi fortuneService para tener fortuna
 		return fortuneService.getFortune();
 	}
+
+	@Override
+	public String getSuerte() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

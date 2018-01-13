@@ -13,4 +13,10 @@ public class SoccerCoach implements Coach {
 		return null;
 	}
 
+	@Override
+	public String getSuerte() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

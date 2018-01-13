@@ -11,12 +11,20 @@ public class SetterDemoApp {
 
 		// Paso 3: Recuperar los beans del contenedor Spring
 		CricketCoach theCoach = context.getBean("myCricketCoach", CricketCoach.class);
+		CricketCoach theCoachArray = context.getBean("myCoachArray", CricketCoach.class);
 
 		// llamar a los metodos del bean
 		System.out.println(theCoach.getDailyWorkOut());
 
 		// llamar al metodo de la fortuna
 		System.out.println(theCoach.getDailyFortune());
+		
+		//llamar a los atributos personalizados
+		System.out.println("Email: " + theCoach.getEmailAddress());
+		System.out.println("Team: " + theCoach.getTeam());
+		
+		//prueba de la suerte en array
+		System.out.println("Suerte: " + theCoachArray.getSuerte());
 
 		// cerar el context
 		context.close();
