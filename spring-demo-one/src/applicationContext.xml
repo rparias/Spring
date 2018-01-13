@@ -8,13 +8,20 @@
 	http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- Paso 1: Configurar los Spring Beans -->
-	<bean id="myFortune"
+	<bean id="myFortuneService"
 		class="com.ronaldarias.springdemo.HappyFortuneService">	
 	</bean>
 	
 	<bean id="myCoach"
-		class="com.ronaldarias.springdemo.BaseballCoach">
-	<constructor-arg ref="myFortune"/>
+		class="com.ronaldarias.springdemo.TrackCoach">
+	<!-- constructor injection -->
+	<constructor-arg ref="myFortuneService"/>
+	</bean>
+	
+	<bean id="myCricketCoach"
+		class="com.ronaldarias.springdemo.CricketCoach">
+	<!-- setter injection -->
+	<property name="fortuneService" ref="myFortuneService"/>
 	</bean>
 	
 </beans>
