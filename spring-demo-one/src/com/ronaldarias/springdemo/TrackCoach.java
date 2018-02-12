@@ -23,8 +23,16 @@ public class TrackCoach implements Coach {
 
 	@Override
 	public String getSuerte() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
+	//init method
+	public void doMyStartupStuff() {
+		System.out.println("TrackCoach: inside method doMyStartupStuff");
+	}
+	
+	//destroy method
+	public void doMyCleanupStuff() {
+		System.out.println("TrackCoach: inside method doMyCleanupStuff");
+	}
 }
