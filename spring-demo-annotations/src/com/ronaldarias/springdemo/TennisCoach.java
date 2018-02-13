@@ -1,17 +1,25 @@
 package com.ronaldarias.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TennisCoach implements Coach {
 
-	private FortuneService fortuneService;
-
+	//con Qualifier llamo especificamente a HappyFortuneService para la inyeccion
 	@Autowired
-	public TennisCoach(FortuneService fortuneService) {
-		this.fortuneService = fortuneService;
+	@Qualifier("randomFortuneService")
+	private FortuneService fortuneService;
+	
+	public TennisCoach() {
+		System.out.println("Entro al constructor por defecto");
 	}
+
+//	@Autowired
+//	public TennisCoach(FortuneService fortuneService) {
+//		this.fortuneService = fortuneService;
+//	}
 
 	@Override
 	public String getDailyWorkout() {
