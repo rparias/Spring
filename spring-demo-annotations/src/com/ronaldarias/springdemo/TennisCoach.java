@@ -1,12 +1,14 @@
 package com.ronaldarias.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
 public class TennisCoach implements Coach {
 
 	//con Qualifier llamo especificamente a HappyFortuneService para la inyeccion
@@ -18,10 +20,17 @@ public class TennisCoach implements Coach {
 		System.out.println(">> TennisCoach: Entro al constructor por defecto");
 	}
 
-//	@Autowired
-//	public TennisCoach(FortuneService fortuneService) {
-//		this.fortuneService = fortuneService;
-//	}
+	//init-method
+	@PostConstruct
+	public void doMyStartupStuff() {
+		System.out.println(">> TennisCoach: dentro de doMyStartupStuff");
+	}
+	
+	//destroy-method
+	@PreDestroy
+	public void doMyCleanupStuff() {
+		System.out.println(">> TennisCoach: dentro de doMyCleanupStuff");
+	}
 
 	@Override
 	public String getDailyWorkout() {
