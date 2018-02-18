@@ -16,9 +16,9 @@
 
 	<br>
 	<br>
+	
+	<a href="student/showForm">Student Form</a>
 
-	<img
-		src="${pageContext.request.contextPath}/resources/images/spring-logo.png" />
 
 </body>
 </html>
