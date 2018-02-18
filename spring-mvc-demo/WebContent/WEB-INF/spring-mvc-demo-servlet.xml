@@ -27,7 +27,13 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
+	
+	<!-- Cargar los resources para custom error messages -->
+	<bean id="messageSource" 
+			class="org.springframework.context.support.ResourceBundleMessageSource">
+			
+			<property name="basenames" value="resources/messages" />
+	</bean>
 </beans>
 
 
