@@ -14,9 +14,27 @@
 		<br><br>
 		
 		<!-- DropdownList -->
+		Country:
 		<form:select path="country">
 			<form:options items="${student.countryOptions}" />
 		</form:select>
+		
+		<br><br>
+		
+		<!-- Radiobutton -->
+		Favorite Language:
+		Java<form:radiobutton path="favoriteLanguage" value="Java"/>
+		C#<form:radiobutton path="favoriteLanguage" value="C#"/>
+		PHP<form:radiobutton path="favoriteLanguage" value="PHP"/>
+		Python<form:radiobutton path="favoriteLanguage" value="Python"/>
+		
+		<br><br>
+		
+		<!-- Checkbox -->
+		Operating Systems:
+		Linux<form:checkbox path="operatingSystems" value="Linux"/>
+		Mac OS<form:checkbox path="operatingSystems" value="Mac OS"/>
+		Windows<form:checkbox path="operatingSystems" value="Windows"/>
 		
 		<br><br>
 		<input type="submit" value="Submit" />
