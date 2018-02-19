@@ -1,6 +1,9 @@
 package com.ronaldarias.springdemo.mvc;
 
 import javax.validation.constraints.Size;
+
+import com.ronaldarias.springdemo.mvc.validation.CourseCode;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -20,6 +23,11 @@ public class Customer {
 	
 	@Pattern(regexp="^[a-zA-Z0-9]{5}", message="Solo hasta 5 caracteres o digitos")
 	private String postalCode;
+	
+	
+	//aqui se hace la custom validation creada
+	@CourseCode(value="RON", message="debe empezar con RON")
+	private String courseCode;
 
 
 	public String getFirstName() {
@@ -59,5 +67,15 @@ public class Customer {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
+	}
+
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
 	}
 }
