@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.ronaldarias.demo.entity.Student;
 
-public class CreateStudentDemo {
+public class UpdateStudentDemo {
 
 	public static void main(String[] args) {
 
@@ -23,21 +23,29 @@ public class CreateStudentDemo {
 		
 		try {
 			
-			//uso de session para guardar los objetos
-			
-			//crear objeto Student
-			Student student = new Student("Ronald", "Arias", "rarias@info.com");
-			
 			//iniciar la transaccion
 			session.beginTransaction();
 			
-			//guardar el objeto student
-			System.out.println("Almacenando el estudiante...");
-			session.save(student);
+			//actualizar nombre por ID
+			int studentID = 4;
+			Student myStudent = session.get(Student.class, studentID);
+			System.out.println("Nombre Anterior: " + myStudent.getFirstName());
+			myStudent.setFirstName("Steven");
+			System.out.println("Nombre Nuevo: " + myStudent.getFirstName());
 			
 			//realizar un commit de la transaccion
 			session.getTransaction().commit();
 			System.out.println("Transaccion realizada!");
+			
+			
+			//actualizar todos los emails
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+			
+			session.createQuery("update Student set email = 'foo@gmail.com'").executeUpdate();
+			
+			session.getTransaction().commit();
+			System.out.println("Emails actualizados!");
 			
 		} finally {
 			factory.close();
