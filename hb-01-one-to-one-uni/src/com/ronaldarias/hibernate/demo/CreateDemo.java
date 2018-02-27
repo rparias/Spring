@@ -1,12 +1,11 @@
 package com.ronaldarias.hibernate.demo;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.ronaldarias.demo.entity.Student;
+import com.ronaldarias.demo.entity.Instructor;
+import com.ronaldarias.demo.entity.InstructorDetail;
 
 public class CreateDemo {
 
@@ -15,7 +14,8 @@ public class CreateDemo {
 		//crear session factory
 		SessionFactory factory = new Configuration()
 									.configure("hibernate.cfg.xml")
-									.addAnnotatedClass(Student.class)
+									.addAnnotatedClass(Instructor.class)
+									.addAnnotatedClass(InstructorDetail.class)
 									.buildSessionFactory();
 		
 		//crear session
@@ -23,17 +23,29 @@ public class CreateDemo {
 		
 		try {
 			
-			//uso de session para guardar los objetos
+			//crear objetos
+//			Instructor instructor = new Instructor("Ronald", "Arias", "rarias@udla.edu.ec");
+//			InstructorDetail instructorDetail = new InstructorDetail("https://www.youtube.com/user/ronaldmetalero", "Escuchar Metal");
+		
+//			Instructor instructor = new Instructor("Gabby", "Sanmartin", "rsanmartin@uce.edu.ec");
+//			InstructorDetail instructorDetail = new InstructorDetail("https://www.youtube.com/user/Gxbby7", "Tocar guitarra");
 			
-			//crear objeto Student
-			Student student = new Student("Ronald", "Arias", "rarias@info.com");
+			Instructor instructor = new Instructor("Juan", "Perez", "jperez@uce.edu.ec");
+			InstructorDetail instructorDetail = new InstructorDetail("https://www.youtube.com/user/juan", "Stalkear");
+			
+			//asocio los objetos
+			instructor.setInstructorDetail(instructorDetail);
 			
 			//iniciar la transaccion
 			session.beginTransaction();
 			
-			//guardar el objeto student
-			System.out.println("Almacenando el estudiante...");
-			session.save(student);
+			/* usar CascadeType.ALL
+			 * hace que se guarde tambien
+			 * en instructorDetail 
+			 * debido a la relacion 1 a 1*/
+			
+			System.out.println("Guardando el instructor: " + instructor);
+			session.save(instructor);
 			
 			//realizar un commit de la transaccion
 			session.getTransaction().commit();
