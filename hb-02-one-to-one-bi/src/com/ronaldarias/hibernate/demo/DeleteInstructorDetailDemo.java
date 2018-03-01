@@ -24,7 +24,7 @@ public class DeleteInstructorDetailDemo {
 			session.beginTransaction();
 
 			// obtener el PK del instructorDetail
-			int theID = 2;
+			int theID = 5;
 
 			InstructorDetail instructorDetail = session.get(InstructorDetail.class, theID);
 
@@ -33,6 +33,11 @@ public class DeleteInstructorDetailDemo {
 			
 			//borrar el instructor pero borrando primero el instructorDetail en cascada bidireccional
 			System.out.println("Borrando instuctorDetail: " + instructorDetail);
+			
+				//CON ESTO SE QUITA EL NULL POINTER EXCEPTION DE EJECUCION AL BORRAR
+				//borrar el objeto de referencia asociado para romper el link bi-direccional
+				instructorDetail.getInstructor().setInstructorDetail(null);
+			
 			session.delete(instructorDetail);
 
 			// realizar un commit de la transaccion

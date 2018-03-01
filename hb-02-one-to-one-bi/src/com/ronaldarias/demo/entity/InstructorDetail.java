@@ -25,7 +25,10 @@ public class InstructorDetail {
 	private String hobby;
 	
 	//para el one to one bidireccional
-	@OneToOne(mappedBy="instructorDetail", cascade = CascadeType.ALL)
+	//para borrar solo el instructorDetail pero no el instructor 
+	//se escoge todas las cascadas excepto la de REMOVE 
+	@OneToOne(mappedBy="instructorDetail", 
+			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Instructor instructor;
 	
 	//---CONSTRUCTORES---//
