@@ -110,7 +110,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", first_name=" + firstName + ", last_name=" + lastName + "]";
+		return "Student [id=" + id + ", Nombre=" + firstName + ", Apellido=" + lastName + ", email=" + email + "]";
 	}
 
 	// metodos de conveniencia
