@@ -24,6 +24,13 @@
 	
 	<div id="container">
 		<div id="content">
+			
+			<!-- boton: Agregar Customer -->
+			<input type="button" value="Agregar Customer" 
+				   onclick="window.location.href='mostrarFormForAdd'; return false;"
+				   class="add-button"
+			/>
+		
 			<!-- tabla html de resultados -->
 			<table>
 				<tr>
