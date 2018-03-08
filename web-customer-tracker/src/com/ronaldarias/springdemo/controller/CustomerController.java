@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ronaldarias.springdemo.entity.Customer;
@@ -40,5 +42,14 @@ public class CustomerController {
 		theModel.addAttribute("customer", theCustomer);
 		
 		return "customer-form";
+	}
+	
+	@PostMapping("/guardarCustomer")
+	public String guardarCustomer(@ModelAttribute("customer") Customer theCustomer) {
+		
+		//guardar el Customer con la ayuda del service
+		customerService.saveCustomer(theCustomer);
+		
+		return "redirect:/customer/list";
 	}
 }
