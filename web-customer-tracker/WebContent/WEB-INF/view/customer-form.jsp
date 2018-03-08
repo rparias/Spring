@@ -28,6 +28,9 @@
 			
 			<!-- form: Agregar Customer -->
 			<form:form action="guardarCustomer" modelAttribute="customer" method="POST">
+			
+			<!-- necesito asociar estos datos con el customer id -->
+			<form:hidden path="id"/>
 				
 				<table>
 					<tbody>

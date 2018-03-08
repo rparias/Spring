@@ -37,14 +37,26 @@
 					<th>Nombre</th>
 					<th>Apellido</th>
 					<th>Email</th>
+					<th>Accion</th>
 				</tr>
 				
 				<!-- loop para imprimir los resultados -->
 				<c:forEach var="tempCustomer" items="${customers}">
+					
+					<!-- construir un link para "actualizar" con el customer id -->
+					<c:url var="updateLink" value="/customer/mostrarFormForUpdate">
+						<c:param name="customerId" value="${tempCustomer.id}"/>
+					</c:url>
+					
 					<tr>
 						<td> ${tempCustomer.firstName}</td>
 						<td> ${tempCustomer.lastName}</td>
 						<td> ${tempCustomer.email}</td>
+						
+						<td>
+							<!-- visualizar el updateLink de arriba de actualizar -->
+							<a href="${updateLink}">Actualizar</a>
+						</td>
 					</tr>
 				</c:forEach>
 				
