@@ -62,9 +62,32 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// borrar el customer
 		Query theQuery = currentSession.createQuery("delete from Customer where id=:theCustomerID");
 		theQuery.setParameter("theCustomerID", theID);
-		
+
 		theQuery.executeUpdate();
 
+	}
+
+	@Override
+	public List<Customer> searchCustomers(String nombreIngresado) {
+
+		// obtener la session actual
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		// buscar el customer
+		Query theQuery = null;
+		
+		//si el campo del nombre no esta vacio hacer la busqueda
+		if(nombreIngresado != null && nombreIngresado.trim().length()>0) {
+			//busca por nombre o apellido o email
+			theQuery = currentSession.createQuery("from Customer where lower(firstName) like:campoIngresado "
+					+ "or lower(lastName) like:campoIngresado "
+					+ "or lower(email) like:campoIngresado", Customer.class);
+			theQuery.setParameter("campoIngresado","%" + nombreIngresado.toLowerCase() + "%");
+		} else {
+			theQuery = currentSession.createQuery("from Customer", Customer.class);
+		}
+
+		return theQuery.getResultList();
 	}
 
 }

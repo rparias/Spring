@@ -3,6 +3,8 @@
     
 <!-- Agregar soporte para tags JSTL -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- Agregar soporte para Spring MVC form tags-->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -30,6 +32,12 @@
 				   onclick="window.location.href='mostrarFormForAdd'; return false;"
 				   class="add-button"
 			/>
+			
+			<!-- agregar formulario para busqueda -->
+			<form:form action="search" method="POST">
+				Buscar customer:<input type="text" name="nombreIngresado"/>
+				<input type="submit" value="Buscar" class="add-button">
+			</form:form>
 		
 			<!-- tabla html de resultados -->
 			<table>
