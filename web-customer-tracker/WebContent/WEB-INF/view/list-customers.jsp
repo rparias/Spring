@@ -48,14 +48,22 @@
 						<c:param name="customerId" value="${tempCustomer.id}"/>
 					</c:url>
 					
+					<!-- construir un link para "borrar" con el customer id -->
+					<c:url var="deleteLink" value="/customer/delete">
+						<c:param name="customerId" value="${tempCustomer.id}"/>
+					</c:url>
+					
 					<tr>
 						<td> ${tempCustomer.firstName}</td>
 						<td> ${tempCustomer.lastName}</td>
 						<td> ${tempCustomer.email}</td>
 						
 						<td>
-							<!-- visualizar el updateLink de arriba de actualizar -->
+							<!-- visualizar el updateLink y deleteLink de arriba de actualizar -->
 							<a href="${updateLink}">Actualizar</a>
+							|
+							<a href="${deleteLink}" 
+							onclick="if(!(confirm('Esta seguro de eliminar este customer?'))) return false">Eliminar</a>
 						</td>
 					</tr>
 				</c:forEach>

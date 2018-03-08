@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ronaldarias.springdemo.entity.Customer;
 
@@ -52,6 +51,20 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 		// obtener el customer
 		return currentSession.get(Customer.class, theID);
+	}
+
+	@Override
+	public void deleteCustomer(int theID) {
+
+		// obtener la session actual
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		// borrar el customer
+		Query theQuery = currentSession.createQuery("delete from Customer where id=:theCustomerID");
+		theQuery.setParameter("theCustomerID", theID);
+		
+		theQuery.executeUpdate();
+
 	}
 
 }
